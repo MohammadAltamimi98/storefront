@@ -1,4 +1,5 @@
 import React from 'react';
+import Categories from './components/categories/Categories.js';
 // const Footer = require('./components/footer/Footer.jsx');
 import Footer from './components/footer/Footer.js';
 import Header from './components/header/Header.js';
@@ -7,7 +8,7 @@ function App() {
   return (
     <div>
       <Header />
-      <h1>hey</h1>
+      <Categories />
       <Footer />
     </div>
   )
