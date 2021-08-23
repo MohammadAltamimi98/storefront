@@ -1,13 +1,13 @@
 import React from 'react';
-const Footer = require('./components/footer/Footer.jsx');
+// const Footer = require('./components/footer/Footer.jsx');
 // import Footer from './components/footer/Footer.js';
 
 function App() {
   return (
     <div>
-      <Footer />
+      <h1>hey</h1>
     </div>
   )
 }
 
-export default App
+export default App;
