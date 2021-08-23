@@ -1,81 +1,34 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import React from 'react';
+import { connect } from 'react-redux';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import iphone from '../../assets/iphone.jpg'
-import fruits from '../../assets/fruits.jpg'
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-});
+import activatedCategory from '../../store/actions/activatedCategory';
 
-function Categories() {
-  const classes = useStyles();
+
+function Categories(props) {
+
   return (
     <div>
-      <h1>Choose category :</h1>
-      <Grid container>
-        <Grid item md={4}>
-          <Card className={classes.root} >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="150"
-                image={fruits}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fruits and Veggies
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Check out our new online Grocery and Order freshly harvested products from our stores. Check the latest offers we have as well !
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.btn}>
-              <Button size="large" variant="contained" color="primary" >
-                Check Category
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item md={4}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="150"
-                image={iphone}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Electronics
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Check out our new and wide range of electronics that just arrived. Catch the 35% sales before the 30th-Oct!
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions >
-              <Button size="large" variant="contained" color="primary" >
-                Check Category
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-      </Grid>
+      <h1>Choose a category :</h1>
+      {props.Categories.map(category => {
+        return (
+          <ButtonBase
+            key={category.name}
+            onClick={() => props.activatedCategory(category.name)}
+            style={{ marginLeft: '30px' }}
+          >
+            <Typography>{category.displayName}</Typography>
+            <img
+              src={category.url}
+              alt={category.displayName}
+              width='50'
+              height='50'
+            ></img>
+          </ButtonBase>
+        )
+
+      })};
     </div >
-  )
+  );
 }
 export default Categories
