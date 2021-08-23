@@ -1,5 +1,5 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -7,10 +7,10 @@ import Link from '@material-ui/core/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="">
-        Store Front      </Link>{' '}
+        Store Front</Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    minHeight: '89vh',
   },
   main: {
     marginTop: theme.spacing(8),
@@ -40,7 +40,7 @@ export default function Footer() {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      {/* <CssBaseline />
       <Container component="main" className={classes.main} maxWidth="sm">
         <Typography variant="h2" component="h1" gutterBottom>
           Sticky footer
@@ -50,10 +50,10 @@ export default function Footer() {
           {'The footer will move as the main element of the page grows.'}
         </Typography>
         <Typography variant="body1">Sticky footer placeholder.</Typography>
-      </Container>
+      </Container> */}
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1">My sticky footer can be found here.</Typography>
+          <Typography variant="body2" align="center">Powered by Mohammad Altamimi.</Typography>
           <Copyright />
         </Container>
       </footer>
