@@ -13,19 +13,14 @@ import fruits from '../../assets/fruits.jpg'
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-
   },
-  btn: {
-    marginRight: "auto",
-    marginLeft: "auto",
-  }
 });
 
 function Categories() {
   const classes = useStyles();
-
   return (
     <div>
+      <h1>Choose category :</h1>
       <Grid container>
         <Grid item md={4}>
           <Card className={classes.root} >
@@ -39,10 +34,10 @@ function Categories() {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Electronics
+                  Fruits and Veggies
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Check out our new and wide range of electronics that just arrived. Catch the 35% sales before the 30th-Oct!
+                  Check out our new online Grocery and Order freshly harvested products from our stores. Check the latest offers we have as well !
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -53,8 +48,7 @@ function Categories() {
             </CardActions>
           </Card>
         </Grid>
-
-        <Grid item md={3}>
+        <Grid item md={4}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -73,7 +67,7 @@ function Categories() {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions className={classes.btn}>
+            <CardActions >
               <Button size="large" variant="contained" color="primary" >
                 Check Category
               </Button>
@@ -84,5 +78,4 @@ function Categories() {
     </div >
   )
 }
-
 export default Categories
