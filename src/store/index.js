@@ -9,7 +9,6 @@ const reducers = combineReducers({
   categories: categoriesReducer,
   products: productsReducer
 })
-
 const store = () => {
   return createStore(reducers, composeWithDevTools());
 }

@@ -5,12 +5,12 @@ import Typography from '@material-ui/core/Typography';
 import activatedCategory from '../../store/actions/activatedCategory';
 
 
-function Categories(props) {
-
+function CategoriesComponent(props) {
+  console.log(props);
   return (
     <div>
       <h1>Choose a category :</h1>
-      {props.Categories.map(category => {
+      {props.categories.map(category => {
         return (
           <ButtonBase
             key={category.name}
@@ -31,4 +31,15 @@ function Categories(props) {
     </div >
   );
 }
-export default Categories
+
+const mapStateToProps = state => {
+  return {
+    categories: state.categories.categories,
+    active: state.categories.active,
+  };
+};
+
+const mapDispatchToProps = { activatedCategory };
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesComponent);
+

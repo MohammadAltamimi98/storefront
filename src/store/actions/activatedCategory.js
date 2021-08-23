@@ -1,6 +1,6 @@
 import React from 'react'
 
-function activatedCategory(name) {
+const activatedCategory = (name) => {
   return {
     type: 'ACTIVE',
     payload: name,
