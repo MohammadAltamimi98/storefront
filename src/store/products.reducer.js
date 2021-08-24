@@ -53,6 +53,7 @@ const productsReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'ACTIVE':
+      console.log(state.products);
       let product = state.products.filter(product =>
         product.category === payload ? product.category : null
       );
