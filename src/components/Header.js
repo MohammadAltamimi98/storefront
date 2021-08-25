@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 // import MenuItem from '@material-ui/core/MenuItem';
+import { useSelector } from 'react-redux';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,8 +21,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-function Header() {
+
+
+function Header(props) {
   const classes = useStyles();
+  const state = useSelector((state) => state);
+  console.log(state.cart.count);
   return (
     <div>
       <AppBar position="static">
@@ -31,7 +37,7 @@ function Header() {
           <Typography variant="h6" className={classes.title}>
             Store Front 🏪
           </Typography>
-          <Button color="inherit">Cart 🛒</Button>
+          <Button color="inherit">Cart ({state.cart.count}) 🛒</Button>
         </Toolbar>
       </AppBar>
 

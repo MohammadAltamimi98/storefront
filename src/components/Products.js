@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +7,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
+import { addProduct } from '../store/actions';
+import { decreaseInventory } from '../store/actions';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,10 +37,12 @@ function Products(props) {
   const classes = useStyles();
   return (
     <div>
+      <br />
+
       <h1>{props.active}</h1>
+      <br />
 
       <Container className={classes.cardGrid} maxWidth="md">
-        {/* End hero unit */}
         <Grid container spacing={4}>
           {props.products.map(product => {
             if (props.active === product.category) {
@@ -62,10 +67,16 @@ function Products(props) {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
+                      {/* <Button size="small" color="primary">
                         View
-                      </Button>
-                      <Button size="small" color="primary">
+                      </Button> */}
+                      <Button size="small" color="primary" onClick={inventory => {
+                        if (product.inventory) {
+                          props.addProduct(product);
+                          props.decreaseInventory(product)
+                        }
+                        else alert('out of stock');
+                      }}>
                         Add to Cart
                       </Button>
                     </CardActions>
@@ -77,7 +88,7 @@ function Products(props) {
         </Grid>
       </Container>
 
-    </div>
+    </div >
   )
 }
 
@@ -87,8 +98,11 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     products: state.products.products,
-    active: state.categories.active
+    active: state.categories.active,
   };
 };
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { addProduct, decreaseInventory };
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

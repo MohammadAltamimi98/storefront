@@ -1,13 +1,15 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import categoriesReducer from './category.reducer';
-
-import productsReducer from './products.reducer';
+import categoriesReducer from './reducers/category-reducer';
+import cartReducer from './reducers/cart-reducer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import productsReducer from './reducers/products-reducer';
 
 
 const reducers = combineReducers({
   categories: categoriesReducer,
-  products: productsReducer
+  products: productsReducer,
+  cart: cartReducer,
 })
 const store = () => {
   return createStore(reducers, composeWithDevTools());
