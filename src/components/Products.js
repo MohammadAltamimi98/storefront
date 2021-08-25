@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
+import { decreaseInventory } from '../store/actions';
 
 
 
@@ -68,7 +69,10 @@ function Products(props) {
                         View
                       </Button>
                       <Button size="small" color="primary" onClick={inventory => {
-                        if (product.inventory) props.addProduct(product);
+                        if (product.inventory) {
+                          props.addProduct(product);
+                          props.decreaseInventory(product)
+                        }
                         else alert('out of stock');
                       }}>
                         Add to Cart
@@ -82,7 +86,7 @@ function Products(props) {
         </Grid>
       </Container>
 
-    </div>
+    </div >
   )
 }
 
@@ -96,6 +100,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { addProduct };
+const mapDispatchToProps = { addProduct, decreaseInventory };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

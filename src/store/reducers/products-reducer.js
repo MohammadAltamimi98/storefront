@@ -58,7 +58,7 @@ const productsReducer = (state = initialState, action) => {
       );
       return { ...state, product: product };
 
-    case 'ADDTOCART':
+    case 'ADDEDPRODUCT':
       state.products = state.products.map(product => {
         if (product.name === payload.name) {
           if (product.inventory > 0) {
@@ -68,7 +68,7 @@ const productsReducer = (state = initialState, action) => {
         }
         return product;
       });
-      return { ...state, inventory: product.inventory };
+      return { ...state };
 
     default:
       return state;

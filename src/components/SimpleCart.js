@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ChipsArray = props => {
+const SimpleCart = props => {
   const classes = useStyles();
 
   // console.log(props);
@@ -54,4 +54,4 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = { deleteFromCart };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChipsArray);
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);

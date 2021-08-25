@@ -29,3 +29,10 @@ export const showCart = open => {
   };
 };
 
+
+export const decreaseInventory = product => {
+  return {
+    type: 'ADDEDPRODUCT',
+    payload: product,
+  };
+};

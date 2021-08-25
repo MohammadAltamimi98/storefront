@@ -3,13 +3,14 @@ import CategoriesComponent from './components/Categories.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import Products from './components/Products.js';
+import Cart from './components/Cart';
 import SimpleCart from './components/SimpleCart';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { If } from 'react-if';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function App(props) {
-  // const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
 
   return (
     <BrowserRouter>
@@ -18,6 +19,9 @@ function App(props) {
         <CategoriesComponent />
         <Products />
         <SimpleCart />
+        <If condition={state.cart.count > 0}>
+          <Cart />
+        </If>
       </Route>
       <Footer />
     </BrowserRouter>
