@@ -23,6 +23,10 @@ function App(props) {
           <Cart />
         </If>
       </Route>
+      <Route exact path="/cart">
+        <Cart />
+        <SimpleCart />
+      </Route>
       <Footer />
     </BrowserRouter>
 

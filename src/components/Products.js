@@ -37,10 +37,12 @@ function Products(props) {
   const classes = useStyles();
   return (
     <div>
+      <br />
+
       <h1>{props.active}</h1>
+      <br />
 
       <Container className={classes.cardGrid} maxWidth="md">
-        {/* End hero unit */}
         <Grid container spacing={4}>
           {props.products.map(product => {
             if (props.active === product.category) {
@@ -65,9 +67,9 @@ function Products(props) {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
+                      {/* <Button size="small" color="primary">
                         View
-                      </Button>
+                      </Button> */}
                       <Button size="small" color="primary" onClick={inventory => {
                         if (product.inventory) {
                           props.addProduct(product);

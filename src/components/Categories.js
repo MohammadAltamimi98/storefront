@@ -10,6 +10,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Button from 'react-bootstrap/Button';
+
+import './categories.scss'
 
 const useStyles = makeStyles({
   root: {
@@ -40,14 +43,16 @@ function CategoriesComponent(props) {
   // console.log(props);
   return (
     <div>
-      <h1>Choose a category :</h1>
+      <br />
+      <h1>CHOOSE CATEGORY :</h1>
+      <br />
       <Container className={classes.cardGrid} maxWidth="md">
 
-        <Grid container spacing={4}>
+        <Grid container spacing={6}>
           {props.categories.map((category, idx) => {
             return (
               <>
-                <Grid item xs={12} sm={6} md={4} key={idx}>
+                <Grid item sm={6} key={idx}>
                   <Card className={classes.root} key={category.name}>
                     <CardActionArea>
                       <CardMedia
@@ -56,18 +61,18 @@ function CategoriesComponent(props) {
                         title={category.name}
                       />
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" className="title" component="h2">
                           {category.name}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" color="textSecondary" className="desc" component="p">
                           {category.description}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <button onClick={() => props.activeCategory(category.name)} >
+                      <Button className="btn" onClick={() => props.activeCategory(category.name)} >
                         check out category
-                      </button>
+                      </Button>
                     </CardActions>
                   </Card>
                 </Grid>
