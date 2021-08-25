@@ -14,7 +14,7 @@ export const addProduct = product => {
 };
 
 
-export const deleteFromCart = product => {
+export const removeFromCart = product => {
   return {
     type: 'DELETE',
     payload: product,

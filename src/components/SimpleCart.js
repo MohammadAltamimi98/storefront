@@ -2,10 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
-import TagFacesIcon from '@material-ui/icons/TagFaces';
 import { connect } from 'react-redux';
-import { If, Else } from 'react-if';
-import { deleteFromCart } from '../store/actions/index';
+import { If } from 'react-if';
+import { removeFromCart } from '../store/actions/index';
 import './simplecart.scss';
 
 const useStyles = makeStyles(theme => ({
@@ -30,14 +29,14 @@ const SimpleCart = props => {
     <>
       <If condition={() => props.cart.length !== 0}>
         <Paper component='ul' className={classes.root}>
-          {props.cart.map((item, idx) => {
+          {props.cart.map((element, idx) => {
             // console.log(item);
             return (
               <li key={idx}>
                 <Chip
-                  label={item.name}
+                  label={element.name}
                   onDelete={() => {
-                    props.deleteFromCart(item);
+                    props.removeFromCart(element);
                   }}
                 />
               </li>
@@ -51,6 +50,6 @@ const SimpleCart = props => {
 const mapStateToProps = state => {
   return { cart: state.cart.cart };
 };
-const mapDispatchToProps = { deleteFromCart };
+const mapDispatchToProps = { removeFromCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);

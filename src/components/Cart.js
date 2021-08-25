@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,52 +8,50 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
-import { deleteFromCart } from '../store/actions/index';
+import { removeFromCart } from '../store/actions/index';
 
 
-const TAX_RATE = 0.07;
+// const TAX_RATE = 0.07;
+// const useStyles = makeStyles({
+//   table: {
+//     minWidth: 700,
+//   },
+// });
+
+// function ccyFormat(num) {
+//   return `${num.toFixed(2)}`;
+// }
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
 });
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
+// function priceRow(qty, unit) {
+//   return qty * unit;
+// }
 
-function priceRow(qty, unit) {
-  return qty * unit;
-}
+// function createRow(desc, qty, unit) {
+//   const price = priceRow(qty, unit);
+//   return { desc, qty, unit, price };
+// }
 
-function createRow(desc, qty, unit) {
-  const price = priceRow(qty, unit);
-  return { desc, qty, unit, price };
-}
+// function subtotal(items) {
+//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+// }
 
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
+// const rows = [
+//   createRow('Paperclips (Box)', 100, 1.15),
+//   createRow('Paper (Case)', 10, 45.99),
+//   createRow('Waste Basket', 2, 17.99),
+// ];
 
-const rows = [
-  createRow('Paperclips (Box)', 100, 1.15),
-  createRow('Paper (Case)', 10, 45.99),
-  createRow('Waste Basket', 2, 17.99),
-];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+// const invoiceSubtotal = subtotal(rows);
+// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 function Cart(props) {
   // const [total, setTotal] = useState(0);
-
-  function total() {
-    let sum = 0
-    props.cart.map((row =>
-      sum = sum + row.price))
-    return sum;
-  }
   const classes = useStyles();
   console.log("hello from here", props.cart);
   return (
@@ -108,6 +106,6 @@ function Cart(props) {
 const mapStateToProps = state => {
   return { cart: state.cart.cart };
 };
-const mapDispatchToProps = { deleteFromCart };
+const mapDispatchToProps = { removeFromCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

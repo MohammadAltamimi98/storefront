@@ -5,7 +5,8 @@ import Header from './components/Header.js';
 import Products from './components/Products.js';
 import Cart from './components/Cart';
 import SimpleCart from './components/SimpleCart';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+// import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { If } from 'react-if';
 import { useSelector } from 'react-redux';
 
