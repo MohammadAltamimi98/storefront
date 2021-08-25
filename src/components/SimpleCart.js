@@ -45,7 +45,6 @@ const SimpleCart = props => {
           })}
         </Paper>
       </If>
-      <Else>{ }</Else>
     </>
   );
 };
