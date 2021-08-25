@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
+import { addProduct } from '../store/actions';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +67,10 @@ function Products(props) {
                       <Button size="small" color="primary">
                         View
                       </Button>
-                      <Button size="small" color="primary">
+                      <Button size="small" color="primary" onClick={inventory => {
+                        if (product.inventory) props.addProduct(product);
+                        else alert('out of stock');
+                      }}>
                         Add to Cart
                       </Button>
                     </CardActions>
@@ -87,8 +92,10 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     products: state.products.products,
-    active: state.categories.active
+    active: state.categories.active,
   };
 };
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { addProduct };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
