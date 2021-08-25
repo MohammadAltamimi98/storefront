@@ -6,6 +6,7 @@ import TagFacesIcon from '@material-ui/icons/TagFaces';
 import { connect } from 'react-redux';
 import { If, Else } from 'react-if';
 import { deleteFromCart } from '../store/actions/index';
+import './simplecart.scss';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
   },
   chip: {
-    margin: theme.spacing(0.5),
+    margin: theme.spacing(5),
   },
 }));
 
