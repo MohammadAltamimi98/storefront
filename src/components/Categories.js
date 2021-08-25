@@ -44,10 +44,10 @@ function CategoriesComponent(props) {
       <Container className={classes.cardGrid} maxWidth="md">
 
         <Grid container spacing={4}>
-          {props.categories.map(category => {
+          {props.categories.map((category, idx) => {
             return (
               <>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4} key={idx}>
                   <Card className={classes.root} key={category.name}>
                     <CardActionArea>
                       <CardMedia

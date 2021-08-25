@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import { deleteFromCart } from '../store/actions/index';
+
 
 const TAX_RATE = 0.07;
 const useStyles = makeStyles({
@@ -44,9 +45,17 @@ const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
- function Cart(props) {
+function Cart(props) {
+  // const [total, setTotal] = useState(0);
+
+  function total() {
+    let sum = 0
+    props.cart.map((row =>
+      sum = sum + row.price))
+    return sum;
+  }
   const classes = useStyles();
-  console.log(props.cart);
+  console.log("hello from here", props.cart);
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="spanning table">
@@ -55,26 +64,26 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal;
             <TableCell align="center" colSpan={3}>
               Details
             </TableCell>
-            <TableCell align="right">Price</TableCell>
+            {/* <TableCell align="right">Price</TableCell> */}
           </TableRow>
           <TableRow>
             <TableCell>Desc</TableCell>
             <TableCell align="right">Qty.</TableCell>
-            <TableCell align="right">Unit</TableCell>
-            <TableCell align="right">Sum</TableCell>
+            <TableCell align="right">Price</TableCell>
+            {/* <TableCell align="right">Sum</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.desc}>
-              <TableCell>{row.desc}</TableCell>
-              <TableCell align="right">{row.qty}</TableCell>
-              <TableCell align="right">{row.unit}</TableCell>
-              <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+          {props.cart.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell>{row.name}</TableCell>
+              <TableCell align="right">{1}</TableCell>
+              <TableCell align="right">{row.price}</TableCell>
+              {/* <TableCell align="right">{row.price * 1}</TableCell> */}
             </TableRow>
           ))}
 
-          <TableRow>
+          {/* <TableRow>
             <TableCell rowSpan={3} />
             <TableCell colSpan={2}>Subtotal</TableCell>
             <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
@@ -83,14 +92,15 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal;
             <TableCell>Tax</TableCell>
             <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
             <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-          </TableRow>
+          </TableRow>*/}
+          {/* 
           <TableRow>
             <TableCell colSpan={2}>Total</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-          </TableRow>
+            <TableCell align="right">{}</TableCell>
+          </TableRow> */}
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer >
   );
 }
 
