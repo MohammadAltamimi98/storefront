@@ -1,9 +1,9 @@
 import React from 'react';
-import CategoriesComponent from './components/categories/Categories.js';
+import CategoriesComponent from './components/Categories.js';
 // const Footer = require('./components/footer/Footer.jsx');
-import Footer from './components/footer/Footer.js';
-import Header from './components/header/Header.js';
-import Products from './components/Products/Products.js';
+import Footer from './components/Footer.js';
+import Header from './components/Header.js';
+import Products from './components/Products.js';
 
 function App(props) {
   return (

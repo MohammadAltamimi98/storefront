@@ -53,11 +53,23 @@ const productsReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'ACTIVE':
-      console.log(state.products);
       let product = state.products.filter(product =>
         product.category === payload ? product.category : null
       );
       return { ...state, product: product };
+
+    case 'ADDTOCART':
+      state.products = state.products.map(product => {
+        if (product.name === payload.name) {
+          if (product.count > 0) {
+            product.count = product.count - 1;
+          }
+          return product;
+        }
+        return product;
+      });
+      return { ...state };
+
     default:
       return state;
   }
