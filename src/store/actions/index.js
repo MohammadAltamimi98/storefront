@@ -38,7 +38,7 @@ export const decreaseInventory = product => {
 };
 
 
-const getCategories = category => {
+export const getCategories = category => {
   return {
     type: 'GET_CATEGORY_FROM_API',
     payload: category,
@@ -47,10 +47,10 @@ const getCategories = category => {
 export default getCategories;
 
 
-const getProducts = product => {
+export const getProducts = product => {
   return {
     type: 'GET_PRODUCT_FROM_API',
     payload: product,
   };
 };
-export default getProducts;
+
