@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
 import { decreaseInventory } from '../store/actions';
+import { useEffect } from 'react';
 import { getApiData } from '../store/action-creator/thunk';
 
 
@@ -36,6 +37,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Products(props) {
   const classes = useStyles();
+  useEffect(() => {
+    props.getApiData();
+    console.log(props);
+  }, []);
+
   return (
     <div>
       <br />

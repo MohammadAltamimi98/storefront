@@ -1,5 +1,5 @@
 import React from 'react';
-import { activeCategory } from '../store/actions/index';
+import { getCategories } from '../store/actions/index';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -70,7 +70,7 @@ function CategoriesComponent(props) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <Button className="btn" onClick={() => props.activeCategory(category)} >
+                      <Button className="btn" onClick={() => props.getCategories(category)} >
                         check out category
                       </Button>
                     </CardActions>
@@ -96,7 +96,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { activeCategory };
+const mapDispatchToProps = { getCategories };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesComponent);
 
