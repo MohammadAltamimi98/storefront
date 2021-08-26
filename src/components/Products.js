@@ -36,25 +36,23 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Products(props) {
-  console.log(props.products);
-  console.log(props.active);
-
   const classes = useStyles();
+
   useEffect(() => {
     props.getApiData();
-    props.getApiDataCategory();
+    // getApiDataCategory();
 
     console.log(props);
   }, []);
+
 
   return (
     <div>
       <br />
 
       <h1>{props.active.name}</h1>
-      <br />
 
-      <Container className={classes.cardGrid} maxWidth="md">
+      {/* <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
           {props.products.results.map(product => {
             if (props.active.name === product.category) {
@@ -98,26 +96,13 @@ function Products(props) {
             }
           })}
         </Grid >
-      </Container >
+      </Container > */}
 
     </div >
   )
 }
 
 
-
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-//     products: state.products.products,
-//     active: state.categories.active,
-//   };
-// };
-
-// const mapDispatchToProps = { addProduct, decreaseInventory };
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Products);
 
 const mapStateToProps = state => {
   return {
