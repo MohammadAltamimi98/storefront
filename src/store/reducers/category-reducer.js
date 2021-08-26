@@ -24,11 +24,11 @@ const categoriesReducer = (state = initialState, action) => {
       const categories = state.categories;
       const active = payload;
       return { categories, active };
-      
-      case 'GET_CATEGORY_FROM_API':
-      console.log(payload);
-      let category = payload.category.map(item => {
-        return item.category;
+
+    case 'GET_CATEGORY_FROM_API':
+      console.log(payload.category.results);
+      let category = payload.category.results.map(item => {
+        return item;
       });
       let newCategory = [...new Set(category)];
       console.log(newCategory);

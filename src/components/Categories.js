@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCategories } from '../store/actions/index';
+import { activeCategory } from '../store/actions/index';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -55,11 +55,11 @@ function CategoriesComponent(props) {
                 <Grid item sm={6} key={idx}>
                   <Card className={classes.root} key={category.name}>
                     <CardActionArea>
-                      <CardMedia
+                      {/* <CardMedia
                         className={classes.media}
                         image={category.url}
                         title={category.name}
-                      />
+                      /> */}
                       <CardContent>
                         <Typography gutterBottom variant="h5" className="title" component="h2">
                           {category.name}
@@ -96,7 +96,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { getCategories };
+const mapDispatchToProps = { activeCategory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesComponent);
 

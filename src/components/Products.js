@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
 import { decreaseInventory } from '../store/actions';
 import { useEffect } from 'react';
-import { getApiData } from '../store/action-creator/thunk';
+import { getApiData, getApiDataCategory } from '../store/action-creator/thunk';
 
 
 
@@ -39,6 +39,8 @@ function Products(props) {
   const classes = useStyles();
   useEffect(() => {
     props.getApiData();
+    props.getApiDataCategory();
+
     console.log(props);
   }, []);
 
@@ -49,7 +51,7 @@ function Products(props) {
       <h1>{props.active}</h1>
       <br />
 
-      <Container className={classes.cardGrid} maxWidth="md">
+      {/* <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
           {props.products.map(product => {
             if (props.active === product.category) {
@@ -76,24 +78,24 @@ function Products(props) {
                     <CardActions>
                       {/* <Button size="small" color="primary">
                         View
-                      </Button> */}
-                      <Button size="small" color="primary" onClick={inventory => {
-                        if (product.inventory) {
-                          props.addProduct(product);
-                          props.decreaseInventory(product)
-                        }
-                        else alert('out of stock');
-                      }}>
-                        Add to Cart
-                      </Button>
+                      </Button> 
+      <Button size="small" color="primary" onClick={inventory => {
+        if (product.inventory) {
+          props.addProduct(product);
+          props.decreaseInventory(product)
+        }
+        else alert('out of stock');
+      }}>
+        Add to Cart
+      </Button>
                     </CardActions>
-                  </Card>
-                </Grid>
+                  </Card >
+                </Grid >
               )
-            }
+}
           })}
-        </Grid>
-      </Container>
+        </Grid >
+      </Container > */}
 
     </div >
   )
@@ -120,6 +122,6 @@ const mapStateToProps = state => {
     products: state.products.products
   };
 };
-const mapDispatchToProps = { addProduct, getApiData };
+const mapDispatchToProps = { addProduct, getApiData, getApiDataCategory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
