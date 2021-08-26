@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from 'react-bootstrap/Button';
 import './categories.scss'
 
+
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -70,7 +72,7 @@ function CategoriesComponent(props) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <Button className="btn" onClick={() => props.getCategories(category)} >
+                      <Button className="btn" onClick={() => props.activeCategory(category.name)} >
                         check out category
                       </Button>
                     </CardActions>

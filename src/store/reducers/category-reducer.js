@@ -22,16 +22,18 @@ const categoriesReducer = (state = initialState, action) => {
   switch (type) {
     case 'ACTIVE':
       const categories = state.categories;
+      console.log(categories);
       const active = payload;
+      console.log(active);
       return { categories, active };
 
     case 'GET_CATEGORY_FROM_API':
-      console.log(payload.category.results);
+      // console.log(payload.category.results);
       let category = payload.category.results.map(item => {
         return item;
       });
       let newCategory = [...new Set(category)];
-      console.log(newCategory);
+      // console.log(newCategory);
       initialState.categories = newCategory;
       return { categories: newCategory, active: '' };
 

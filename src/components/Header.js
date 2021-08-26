@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 function Header(props) {
   const classes = useStyles();
   const state = useSelector((state) => state);
-  console.log(state.cart.count);
+  // console.log(state.cart.count);
   return (
     <div>
       <AppBar position="static">
