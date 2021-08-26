@@ -70,6 +70,10 @@ const productsReducer = (state = initialState, action) => {
       });
       return { ...state };
 
+    case 'GET_PRODUCT_FROM_API':
+      console.log(payload.products);
+      return { ...state, products: payload.products };
+
     default:
       return state;
   }
