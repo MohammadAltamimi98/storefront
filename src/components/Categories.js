@@ -1,5 +1,5 @@
 import React from 'react';
-import { activeCategory } from '../store/actions';
+import { activeCategory } from '../store/actions/index';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from 'react-bootstrap/Button';
-
 import './categories.scss'
 
 const useStyles = makeStyles({
@@ -50,6 +49,7 @@ function CategoriesComponent(props) {
 
         <Grid container spacing={6}>
           {props.categories.map((category, idx) => {
+            console.log(category);
             return (
               <>
                 <Grid item sm={6} key={idx}>
@@ -70,7 +70,7 @@ function CategoriesComponent(props) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <Button className="btn" onClick={() => props.activeCategory(category.name)} >
+                      <Button className="btn" onClick={() => props.activeCategory(category)} >
                         check out category
                       </Button>
                     </CardActions>

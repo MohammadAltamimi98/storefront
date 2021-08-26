@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
 import { decreaseInventory } from '../store/actions';
+import { getApiData } from '../store/action-creator/thunk';
 
 
 
@@ -94,15 +95,25 @@ function Products(props) {
 
 
 
+// const mapStateToProps = state => {
+//   console.log(state);
+//   return {
+//     products: state.products.products,
+//     active: state.categories.active,
+//   };
+// };
+
+// const mapDispatchToProps = { addProduct, decreaseInventory };
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Products);
+
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    products: state.products.products,
     active: state.categories.active,
+    products: state.products.products
   };
 };
-
-const mapDispatchToProps = { addProduct, decreaseInventory };
-
+const mapDispatchToProps = { addProduct, getApiData };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
