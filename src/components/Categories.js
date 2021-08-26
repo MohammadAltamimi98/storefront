@@ -72,7 +72,7 @@ function CategoriesComponent(props) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <Button className="btn" onClick={() => props.activeCategory(category.name)} >
+                      <Button className="btn" onClick={() => props.activeCategory(category)} >
                         check out category
                       </Button>
                     </CardActions>

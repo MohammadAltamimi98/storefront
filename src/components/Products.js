@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Products(props) {
+  console.log(props.products);
+  console.log(props.active);
+
   const classes = useStyles();
   useEffect(() => {
     props.getApiData();
@@ -48,13 +51,13 @@ function Products(props) {
     <div>
       <br />
 
-      <h1>{props.active}</h1>
+      <h1>{props.active.name}</h1>
       <br />
 
-      {/* <Container className={classes.cardGrid} maxWidth="md">
+      <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-          {props.products.map(product => {
-            if (props.active === product.category) {
+          {props.products.results.map(product => {
+            if (props.active.name === product.category) {
               return (
                 <Grid item key={product.name} xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -72,30 +75,30 @@ function Products(props) {
 
                         Price: {product.price} Jd <br />
 
-                        Inventory: {product.inventory}
+                        Inventory: {product.inStock}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      {/* <Button size="small" color="primary">
+                      <Button size="small" color="primary">
                         View
-                      </Button> 
-      <Button size="small" color="primary" onClick={inventory => {
-        if (product.inventory) {
-          props.addProduct(product);
-          props.decreaseInventory(product)
-        }
-        else alert('out of stock');
-      }}>
-        Add to Cart
-      </Button>
+                      </Button>
+                      <Button size="small" color="primary" onClick={inventory => {
+                        if (product.inStock) {
+                          props.addProduct(product);
+                          // props.decreaseInventory(product)
+                        }
+                        else alert('out of stock');
+                      }}>
+                        Add to Cart
+                      </Button>
                     </CardActions>
                   </Card >
                 </Grid >
               )
-}
+            }
           })}
         </Grid >
-      </Container > */}
+      </Container >
 
     </div >
   )
