@@ -28,7 +28,7 @@ const categoriesReducer = (state = initialState, action) => {
       return { categories, active };
 
     case 'GET_CATEGORY_FROM_API':
-      console.log(payload.category.results);
+      console.log(payload);
       let category = payload.category.results.map(item => {
         return item;
       });

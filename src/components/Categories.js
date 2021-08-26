@@ -12,20 +12,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from 'react-bootstrap/Button';
 import './categories.scss'
+import { getApiDataCategory } from '../store/action-creator/thunk';
+import { useEffect } from 'react';
 
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
   },
   media: {
     height: 140,
   },
-  // cardGrid: {
-  //   paddingTop: theme.spacing(8),
-  //   paddingBottom: theme.spacing(8),
-  // },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
   card: {
     height: '100%',
     display: 'flex',
@@ -37,31 +38,32 @@ const useStyles = makeStyles({
   cardContent: {
     flexGrow: 1,
   },
-});
+}));
 
 function CategoriesComponent(props) {
   const classes = useStyles();
+  useEffect(() => {
+    props.getApiDataCategory();
+
+    console.log(props);
+  }, []);
+
   // console.log(props);
   return (
     <div>
       <br />
       <h1>CHOOSE CATEGORY :</h1>
       <br />
-      <Container className={classes.cardGrid} maxWidth="md">
+      <Container className={classes.cardGrid} >
 
-        <Grid container spacing={6}>
+        <Grid container spacing={8}>
           {props.categories.map((category, idx) => {
             console.log(category);
             return (
-              <>
-                <Grid item sm={6} key={idx}>
-                  <Card className={classes.root} key={category.name}>
+              <div key={idx}>
+                <Grid item className={classes.root} lg={12} >
+                  <Card key={idx}>
                     <CardActionArea>
-                      {/* <CardMedia
-                        className={classes.media}
-                        image={category.url}
-                        title={category.name}
-                      /> */}
                       <CardContent>
                         <Typography gutterBottom variant="h5" className="title" component="h2">
                           {category.name}
@@ -79,7 +81,7 @@ function CategoriesComponent(props) {
                   </Card>
                 </Grid>
                 < br />
-              </>
+              </div>
             )
           })}
         </Grid>
@@ -98,7 +100,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { activeCategory };
+const mapDispatchToProps = { activeCategory, getApiDataCategory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesComponent);
 

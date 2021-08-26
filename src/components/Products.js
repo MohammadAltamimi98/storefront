@@ -12,7 +12,8 @@ import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
 import { decreaseInventory } from '../store/actions';
 import { useEffect } from 'react';
-import { getApiData, getApiDataCategory } from '../store/action-creator/thunk';
+import { getApiData } from '../store/action-creator/thunk';
+
 
 
 
@@ -39,8 +40,9 @@ function Products(props) {
   const classes = useStyles();
 
   useEffect(() => {
+    // props.getApiDataCategory();
     props.getApiData();
-    // getApiDataCategory();
+
 
     console.log(props);
   }, []);
@@ -110,6 +112,6 @@ const mapStateToProps = state => {
     products: state.products.products
   };
 };
-const mapDispatchToProps = { addProduct, getApiData, getApiDataCategory };
+const mapDispatchToProps = { addProduct, getApiData };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
