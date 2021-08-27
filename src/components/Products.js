@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 import Container from '@material-ui/core/Container';
 import { addProduct } from '../store/actions';
 import { decreaseInventory } from '../store/actions';
+import { useSelector, useDispatch } from 'react-redux'
+
 
 
 
@@ -34,59 +36,63 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Products(props) {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  console.log('state', state);
+
   const classes = useStyles();
   return (
     <div>
       <br />
 
-      <h1>{props.active}</h1>
+      <h1>{state.categories.active}</h1>
       <br />
+      {state.categories.active !== null &&
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {state.products?.product?.map((product, idx) => {
+              if (state.categories.active === product.category) {
+                return (
+                  <Grid item key={product.name} xs={12} sm={6} md={4} key={idx}>
+                    <Card className={classes.card}>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image={product.picture}
+                        title={product.name}
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {product.name}
+                        </Typography>
+                        <Typography>
+                          Category: {product.category} <br />
 
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container spacing={4}>
-          {props.products.map(product => {
-            if (props.active === product.category) {
-              return (
-                <Grid item key={product.name} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={product.picture}
-                      title={product.name}
-                    />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {product.name}
-                      </Typography>
-                      <Typography>
-                        Category: {product.category} <br />
+                          Price: {product.price} Jd <br />
 
-                        Price: {product.price} Jd <br />
-
-                        Inventory: {product.inventory}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small" color="primary">
+                          Inventory: {product.inventory}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        {/* <Button size="small" color="primary">
                         View
                       </Button> */}
-                      <Button size="small" color="primary" onClick={inventory => {
-                        if (product.inventory) {
-                          props.addProduct(product);
-                          props.decreaseInventory(product)
-                        }
-                        else alert('out of stock');
-                      }}>
-                        Add to Cart
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              )
-            }
-          })}
-        </Grid>
-      </Container>
+                        <Button size="small" color="primary" onClick={inventory => {
+                          if (product.inventory) {
+                            dispatch(addProduct(product));
+                            dispatch(decreaseInventory(product))
+                          }
+                          else alert('out of stock');
+                        }}>
+                          Add to Cart
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                )
+              }
+            })}
+          </Grid>
+        </Container>}
 
     </div >
   )
@@ -94,15 +100,15 @@ function Products(props) {
 
 
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    products: state.products.products,
-    active: state.categories.active,
-  };
-};
+// const mapStateToProps = state => {
+//   console.log(state);
+//   return {
+//     products: state.products.products,
+//     active: state.categories.active,
+//   };
+// };
 
-const mapDispatchToProps = { addProduct, decreaseInventory };
+// const mapDispatchToProps = { addProduct, decreaseInventory };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;
