@@ -11,6 +11,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from 'react-bootstrap/Button';
+import { useSelector, useDispatch } from 'react-redux'
+
 
 import './categories.scss'
 
@@ -39,6 +41,9 @@ const useStyles = makeStyles({
 });
 
 function CategoriesComponent(props) {
+  const state = useSelector(state => state.categories.categories);
+  const dispatch = useDispatch();
+  console.log(state);
   const classes = useStyles();
   // console.log(props);
   return (
@@ -49,7 +54,7 @@ function CategoriesComponent(props) {
       <Container className={classes.cardGrid} maxWidth="md">
 
         <Grid container spacing={6}>
-          {props.categories.map((category, idx) => {
+          {state.map((category, idx) => {
             return (
               <>
                 <Grid item sm={6} key={idx}>
@@ -70,7 +75,7 @@ function CategoriesComponent(props) {
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      <Button className="btn" onClick={() => props.activeCategory(category.name)} >
+                      <Button className="btn" onClick={() => dispatch(activeCategory(category.name))} >
                         check out category
                       </Button>
                     </CardActions>
@@ -89,16 +94,16 @@ function CategoriesComponent(props) {
 
 
 
-const mapStateToProps = state => {
-  return {
-    categories: state.categories.categories,
-    active: state.categories.active,
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     categories: state.categories.categories,
+//     active: state.categories.active,
+//   };
+// };
 
-const mapDispatchToProps = { activeCategory };
+// const mapDispatchToProps = { activeCategory };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesComponent);
+export default CategoriesComponent;
 
 
 
