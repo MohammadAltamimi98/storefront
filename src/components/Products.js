@@ -17,6 +17,7 @@ import { getApiData } from '../store/action-creator/thunk';
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -37,14 +38,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Products(props) {
+
+  console.log('props.active', props.products);
   const classes = useStyles();
 
   useEffect(() => {
-    // props.getApiDataCategory();
     props.getApiData();
-
-
-    console.log(props);
   }, []);
 
 
@@ -52,7 +51,7 @@ function Products(props) {
     <div>
       <br />
 
-      <h1>{props.active.name}</h1>
+      {/* <h1>{props.active.name}</h1> */}
 
       {/* <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>

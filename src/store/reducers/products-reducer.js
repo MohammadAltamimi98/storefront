@@ -54,10 +54,18 @@ const productsReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'ACTIVE':
-      let product = state.products.filter(product =>
-        product.category === payload ? product.category : null
+      console.log(payload);
+      // console.log('category Active', (payload.name));
+      console.log('category Active', (state.products));
+      console.log(state);
+      let product = state.products.results.filter(product => {
+        console.log(product.category, '=======?', payload.name);
+        return product.category === payload.name ? product.category : null;
+      }
       );
-      return { ...state, product: product };
+      console.log(state);
+      return { ...state, products: product };
+
 
     case 'ADDEDPRODUCT':
       state.products = state.products.map(product => {
@@ -72,7 +80,7 @@ const productsReducer = (state = initialState, action) => {
       return { ...state };
 
     case 'GET_PRODUCT_FROM_API':
-      console.log(payload.products);
+      // console.log('get p from api', payload.products);
       return { ...state, products: payload.products };
 
     default:

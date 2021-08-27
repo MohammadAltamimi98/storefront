@@ -45,7 +45,7 @@ function CategoriesComponent(props) {
   useEffect(() => {
     props.getApiDataCategory();
 
-    console.log(props);
+    // console.log(props);
   }, []);
 
   // console.log(props);
@@ -58,7 +58,7 @@ function CategoriesComponent(props) {
 
         <Grid container spacing={8}>
           {props.categories.map((category, idx) => {
-            console.log(category);
+            // console.log(category);
             return (
               <div key={idx}>
                 <Grid item className={classes.root} lg={12} >
