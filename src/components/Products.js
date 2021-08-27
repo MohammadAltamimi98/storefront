@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Products(props) {
 
-  console.log('props.active', props.products);
+  console.log('category is active', props.products);
   const classes = useStyles();
 
   useEffect(() => {

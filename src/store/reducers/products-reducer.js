@@ -54,17 +54,11 @@ const productsReducer = (state = initialState, action) => {
 
   switch (type) {
     case 'ACTIVE':
-      console.log(payload);
-      // console.log('category Active', (payload.name));
-      console.log('category Active', (state.products));
-      console.log(state);
       let product = state.products.results.filter(product => {
-        console.log(product.category, '=======?', payload.name);
-        return product.category === payload.name ? product.category : null;
+        return product.category === payload.name ? product : null;
       }
       );
-      console.log(state);
-      return { ...state, products: product };
+            return { ...state, product };
 
 
     case 'ADDEDPRODUCT':
