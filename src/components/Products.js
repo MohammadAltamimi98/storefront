@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -49,10 +50,10 @@ function Products(props) {
       {state.categories.active !== null &&
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {state.products?.product?.map(product => {
+            {state.products?.product?.map((product, idx) => {
               if (state.categories.active === product.category) {
                 return (
-                  <Grid item key={product.name} xs={12} sm={6} md={4}>
+                  <Grid item key={product.name} xs={12} sm={6} md={4} key={idx}>
                     <Card className={classes.card}>
                       <CardMedia
                         className={classes.cardMedia}
